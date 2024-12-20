@@ -9,6 +9,11 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
+  app.enableCors({
+    origin: 'http://localhost:3000', // Frontend URL
+    credentials: true, // Allow cookies or authorization headers
+  });
+
   const config = new DocumentBuilder()
     .setTitle('Platform')
     .setDescription('The Platform API description')

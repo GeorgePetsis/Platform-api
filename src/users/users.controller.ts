@@ -26,6 +26,8 @@ import { RolesGuard } from 'src/auth/guards/roles/roles.guard';
 
 @Controller('users')
 @ApiTags('users')
+@UseGuards(JwtAuthGuard, RolesGuard)
+@ApiBearerAuth()
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   @Roles(UserRole.ADMIN, UserRole.EDITOR)
